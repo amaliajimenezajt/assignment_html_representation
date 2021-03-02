@@ -1,0 +1,17 @@
+.exclaim .reveal .state-background {
+  background: black;
+} 
+
+.exclaim .reveal div {
+  color: white;
+  font-family: 'Lacquer';
+}
+
+.exclaim .reveal code {
+  color: red;
+}
+
+.small-code pre code {
+  font-size: 1em;
+}
+

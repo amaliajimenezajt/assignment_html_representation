@@ -1,0 +1,44 @@
+DATA TIDYING PRESENTATION
+========================================================
+author:  Amalia Jiménez Toledano
+transition: concave
+css: custom.css
+
+READ THE DATA AND SUMMARY
+========================================================
+type: section
+
+```{r include=FALSE}
+library(Stat2Data)
+data(Clothing)
+summary(Clothing)
+```
+
+**The variables of the data are the following:**
+
+- ID: 	Case ID
+- Amount: Net dollar amount spent by customers in their latest purchase from this retailer
+- Recency:	Number of months since the last purchase
+- Freq12:	Number of purchases in the last 12 months
+- Dollar12:	Dollar amount of purchases in the last 12 months
+- Freq24:	Number of purchases in the last 24 month
+- Dollar24:	Dollar amount of purchases in the last 24 months
+- Card:	1 for customers who have a private-label credit card with the retailer, 0 if not
+
+Slide With Code
+========================================================
+type: prompt
+
+
+
+```{r}
+summary(cars)
+```
+
+Slide 1
+====================================
+id: slide1
+
+Slide 2
+====================================
+[Go to slide 1](#/slide1)
