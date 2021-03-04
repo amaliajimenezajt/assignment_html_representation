@@ -3,6 +3,9 @@ DATA TIDYING PRESENTATION
 author:  Amalia Jiménez Toledano
 transition: concave
 css: custom.css
+autosize: true
+width: 1500
+height: 900
 
 
 READ THE DATA AND SUMMARY
@@ -27,8 +30,12 @@ AIMS OF THE WORK
 ========================================================
 type: prompt
 
-- Boxplot about some variables: [Go to slide 1](#/boxplot)
+The following are some of the results obtained on the previously mentioned database:
 
+- Summary table about variables: [Sumamary Click](#/boxplot)
+- Box-plot about some variables: [Box-plot Click](#/summary)
+- Regression model: [Regression Click](#/regression)
+- Results about Card variable: [Card Variable Click](#/summary)
 
 
 
@@ -39,19 +46,24 @@ id: summary
 
 
 ```r
-str(Clothing)
+summary(Clothing)
 ```
 
 ```
-'data.frame':	60 obs. of  8 variables:
- $ ID      : int  1 2 3 4 5 6 7 8 9 10 ...
- $ Amount  : int  0 0 0 30 33 35 35 39 40 45 ...
- $ Recency : int  22 30 24 6 12 48 5 2 24 3 ...
- $ Freq12  : int  0 0 0 3 1 0 5 5 0 6 ...
- $ Dollar12: int  0 0 0 140 50 0 450 245 0 403 ...
- $ Freq24  : int  3 0 1 4 1 0 6 12 1 8 ...
- $ Dollar24: int  400 0 250 225 50 0 415 661 225 1138 ...
- $ Card    : int  0 0 0 0 0 0 0 1 0 0 ...
+       ID            Amount           Recency           Freq12      
+ Min.   : 1.00   Min.   :      0   Min.   : 1.000   Min.   : 0.000  
+ 1st Qu.:15.75   1st Qu.:     50   1st Qu.: 3.000   1st Qu.: 1.000  
+ Median :30.50   Median :     70   Median : 4.500   Median : 3.000  
+ Mean   :30.50   Mean   :  25201   Mean   : 7.217   Mean   : 2.883  
+ 3rd Qu.:45.25   3rd Qu.:    100   3rd Qu.: 8.000   3rd Qu.: 4.000  
+ Max.   :60.00   Max.   :1506000   Max.   :48.000   Max.   :10.000  
+    Dollar12          Freq24          Dollar24           Card       
+ Min.   :   0.0   Min.   : 0.000   Min.   :   0.0   Min.   :0.0000  
+ 1st Qu.: 107.5   1st Qu.: 4.000   1st Qu.: 260.2   1st Qu.:0.0000  
+ Median : 223.5   Median : 6.000   Median : 461.5   Median :0.0000  
+ Mean   : 372.0   Mean   : 5.617   Mean   : 660.8   Mean   :0.3333  
+ 3rd Qu.: 406.5   3rd Qu.: 7.250   3rd Qu.: 718.5   3rd Qu.:1.0000  
+ Max.   :5000.0   Max.   :13.000   Max.   :8000.0   Max.   :1.0000  
 ```
 
 
@@ -69,9 +81,9 @@ id: boxplot
 
 hhhhhhh hhhhhhhhhhhhh
 
-Tabla
+REGRESSION
 ========================================================
-id: tables
+id: regression
 type: prompt
 
 

@@ -3,6 +3,9 @@ DATA TIDYING PRESENTATION
 author:  Amalia Jiménez Toledano
 transition: concave
 css: custom.css
+autosize: true
+width: 1500
+height: 900
 
 
 READ THE DATA AND SUMMARY
@@ -33,8 +36,12 @@ AIMS OF THE WORK
 ========================================================
 type: prompt
 
-- Boxplot about some variables: [Go to slide 1](#/boxplot)
+The following are some of the results obtained on the previously mentioned database:
 
+- Summary table about variables: [Sumamary Click](#/boxplot)
+- Box-plot about some variables: [Box-plot Click](#/summary)
+- Regression model: [Regression Click](#/regression)
+- Results about Card variable: [Card Variable Click](#/summary)
 
 
 
@@ -44,7 +51,7 @@ type: prompt
 id: summary
 
 ```{r}
-str(Clothing)
+summary(Clothing)
 ```
 
 ```{r}
@@ -70,9 +77,9 @@ ggplot(Clothing, aes(x=0,y=Recency))+
 
 hhhhhhh hhhhhhhhhhhhh
 
-Tabla
+REGRESSION
 ========================================================
-id: tables
+id: regression
 type: prompt
 
 
