@@ -54,6 +54,8 @@ id: summary
 summary(Clothing)
 ```
 
+Since the variable "Card" is categorical, the transformation is performed:
+
 ```{r}
 Clothing$Car <- as.factor(Clothing$Car)
 ```
@@ -64,7 +66,7 @@ Box Plot
 type: prompt
 id: boxplot
 
-```{r echo=FALSE}
+```{r echo=FALSE,fig.align='right',fig.pos="H"}
 ggplot(Clothing, aes(x=0,y=Recency))+ 
       geom_boxplot(color="black",fill="lightslateblue",alpha=0.2,notch=TRUE,
         notchwidth = 0.8,outlier.colour="red",outlier.fill="red",
@@ -75,7 +77,7 @@ ggplot(Clothing, aes(x=0,y=Recency))+
   scale_fill_manual(values=c('lightcyan1'))
 ```
 
-hhhhhhh hhhhhhhhhhhhh
+
 
 REGRESSION
 ========================================================
@@ -93,6 +95,33 @@ kable(summary(out)$coef, digits=2)
 this is the equation $$y_i=\beta_1*x_1+beta_2*x_2 $$
 
 
-Slide 2
-====================================
-[Go to slide 1](#/slide1)
+CATEGORICAL VARIABLE
+========================================================
+id: regression
+type: prompt
+
+
+```{r echo=FALSE}
+library(tidyverse)
+library(ggplot2)
+count.g02=data.frame(
+  g02=c("Public-label","Private-label"),
+  n=c(40,20),
+  prop=c(66.66,33.33)
+)
+count.g02<- count.g02 %>%
+  arrange(desc(g02)) %>%
+  mutate(lab.ypos = cumsum(prop) - 0.5*prop)
+
+ggplot(count.g02, aes(x = "", y = prop, fill = g02)) +
+  geom_bar(width = 1, stat = "identity", color = "white") +
+  coord_polar("y", start = 0)+
+  guides(fill=guide_legend(title="Card"))+
+  labs(title="Pie Plot Variable Card")+
+  geom_text(aes(y = lab.ypos, label = prop), color = "white")+
+  scale_fill_manual(values=c("#0073C2FF","#EFC000FF")) +
+  theme_void()
+```
+
+
+

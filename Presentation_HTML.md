@@ -66,6 +66,8 @@ summary(Clothing)
  Max.   :5000.0   Max.   :13.000   Max.   :8000.0   Max.   :1.0000  
 ```
 
+Since the variable "Card" is categorical, the transformation is performed:
+
 
 ```r
 Clothing$Car <- as.factor(Clothing$Car)
@@ -77,9 +79,9 @@ Box Plot
 type: prompt
 id: boxplot
 
-![plot of chunk unnamed-chunk-4](Presentation_HTML-figure/unnamed-chunk-4-1.png)
+<img src="Presentation_HTML-figure/unnamed-chunk-4-1.png" title="plot of chunk unnamed-chunk-4" alt="plot of chunk unnamed-chunk-4" style="display: block; margin: auto 0 auto auto;" />
 
-hhhhhhh hhhhhhhhhhhhh
+
 
 REGRESSION
 ========================================================
@@ -106,6 +108,13 @@ kable(summary(out)$coef, digits=2)
 this is the equation $$y_i=\beta_1*x_1+beta_2*x_2 $$
 
 
-Slide 2
-====================================
-[Go to slide 1](#/slide1)
+CATEGORICAL VARIABLE
+========================================================
+id: regression
+type: prompt
+
+
+![plot of chunk unnamed-chunk-6](Presentation_HTML-figure/unnamed-chunk-6-1.png)
+
+
+
