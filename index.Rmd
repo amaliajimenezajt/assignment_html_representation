@@ -1,0 +1,81 @@
+---
+title: "Untitled"
+author: "Amalia Jiménez Toledano"
+date: "4/3/2021"
+output: slidy_presentation
+css: custom.css
+---
+
+
+READ THE DATA AND SUMMARY
+========================================================
+type: prompt
+
+```{r include=FALSE}
+library(Stat2Data)
+library(ggplot2)
+data(Clothing)
+summary(Clothing)
+```
+
+**The variables of the data are the following:**
+
+- ID: 	Case ID
+- Amount: Net dollar amount spent by customers in their latest purchase from this retailer
+- Recency:	Number of months since the last purchase
+- Freq12:	Number of purchases in the last 12 months
+- Dollar12:	Dollar amount of purchases in the last 12 months
+- Freq24:	Number of purchases in the last 24 month
+- Dollar24:	Dollar amount of purchases in the last 24 months
+- Card:	1 for customers who have a private-label credit card with the retailer, 0 if not
+
+Slide With Code
+========================================================
+type: prompt
+
+```{r}
+str(Clothing)
+```
+
+```{r}
+Clothing$Car <- as.factor(Clothing$Car)
+```
+
+
+Box Plot 
+========================================================
+id: 
+type: prompt
+
+```{r echo=FALSE}
+ggplot(Clothing, aes(x=0,y=Recency))+ 
+      geom_boxplot(color="black",fill="lightslateblue",alpha=0.2,notch=TRUE,
+        notchwidth = 0.8,outlier.colour="red",outlier.fill="red",
+        outlier.size=3)+
+  stat_summary(fun.y=mean, geom="point", shape=18,size=3, color="red")+
+  labs(title="Boxplot Price of Light", y="Price of Light")+
+  theme_bw() +
+  scale_fill_manual(values=c('lightcyan1'))
+```
+
+hhhhhhh hhhhhhhhhhhhh
+
+Tabla
+========================================================
+id: 
+type: prompt
+
+
+```{r}
+out <- lm(Amount ~ Freq24+Dollar24,data=Clothing)
+library(knitr)
+kable(summary(out)$coef, digits=2)
+```
+
+
+this is the equation $$y_i=\beta_1*x_1+beta_2*x_2 $$
+
+
+Slide 2
+====================================
+[Go to slide 1](#/slide1)
