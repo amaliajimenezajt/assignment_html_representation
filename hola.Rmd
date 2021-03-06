@@ -1,0 +1,125 @@
+---
+title: "**DATA TIDYING PRESENTATION**"
+author: "*Amalia Jiménez Toledano*"
+output: 
+  revealjs::revealjs_presentation:
+    theme: sky
+    center: T
+    self_contained: false
+    highlight: kate
+    transition: concave
+    css: custom.css
+    reveal_options:
+      slideNumber: true
+---
+
+
+```{r include=FALSE}
+library(Stat2Data)
+library(ggplot2)
+data(Clothing)
+summary(Clothing)
+library(knitr)
+library(plotly)
+library(tidyverse)
+```
+
+# READ THE DATA AND SUMMARY
+
+**The variables of the data are the following:**
+
+<p class="fragment" data-fragment-index="6">.**ID**: 	Case ID</p>
+<p class="fragment" data-fragment-index="6">.- **Amount**: Net dollar amount spent by customers in their latest purchase from this retailer</p>
+
+- **ID**: 	Case ID
+- **Amount**: Net dollar amount spent by customers in their latest purchase from this retailer
+- **Recency**:	Number of months since the last purchase
+- **Freq12**:	Number of purchases in the last 12 months
+- **Dollar12**:	Dollar amount of purchases in the last 12 months
+- **Freq24**:	Number of purchases in the last 24 month
+- **Dollar24**:	Dollar amount of purchases in the last 24 months
+- **Card**:	1 for customers who have a private-label credit card with the retailer, 0 if not
+
+## DATABASE CONSIDERATIONS
+
+```{r}
+summary(Clothing)
+```
+
+Since the variable "Card" is categorical, the transformation is performed:
+
+```{r}
+Clothing$Card <- as.factor(Clothing$Card)
+```
+
+
+# BOXPLOT NUMERIC VARIABLES
+
+## BOXPLOT RECENCY
+
+```{r, echo=F}
+ggplot(Clothing, aes(x=0,y=Recency))+ 
+      geom_boxplot(color="black",fill="lightslateblue",alpha=0.2,notch=TRUE,
+        notchwidth = 0.8,outlier.colour="red",outlier.fill="red",
+        outlier.size=3)+
+  stat_summary(fun.y=mean, geom="point", shape=18,size=3, color="red")+
+  labs(title="Boxplot Price of Light", y="Price of Light")+
+  theme_bw() +
+  scale_fill_manual(values=c('lightcyan1'))
+```
+
+## BOXPLOT 
+
+```{r, echo=F}
+ggplot(Clothing, aes(x=0,y=Recency))+ 
+      geom_boxplot(color="black",fill="lightslateblue",alpha=0.2,notch=TRUE,
+        notchwidth = 0.8,outlier.colour="red",outlier.fill="red",
+        outlier.size=3)+
+  stat_summary(fun.y=mean, geom="point", shape=18,size=3, color="red")+
+  labs(title="Boxplot Price of Light", y="Price of Light")+
+  theme_bw() +
+  scale_fill_manual(values=c('lightcyan1'))
+```
+
+
+
+# REGRESSION MODEL
+
+## SUMMARY OF THE MODEL
+
+We are interested in knowing the relationship of the variable "Amount" with respect to the variable "Dollar24":
+
+```{r include=FALSE}
+Clothing=Clothing[-60,]
+out <- lm(Amount ~ Dollar24,data=Clothing)
+summary(out)
+library(knitr)
+```
+
+```{r echo=FALSE}
+kable(summary(out)$coef, digits=3)
+```
+
+
+
+**Results:** $y_i=\beta_0+\beta_1x_1+beta_2x_2=-6.2154+ 0.203x_1$
+
+The variable `Dollar24` IS found to be significant for the model.
+
+
+## PLOT THE MODEL
+
+```{r, echo=F,warning=FALSE}
+Clothing=Clothing[-60,]
+Clothing$Card <- as.factor(Clothing$Card)
+regmodel <- lm(Amount ~ Dollar24, data = Clothing)
+plot <- Clothing %>%
+  plot_ly(x = ~Dollar24, color = ~Card) %>%
+  add_markers(y = ~Amount) %>%
+  add_lines(x = ~Dollar24, y = fitted(regmodel))
+htmlwidgets::saveWidget(plot,'plotly.html')
+knitr::include_url('plotly.html', height = "576px")
+```
+
+
+# THE END
