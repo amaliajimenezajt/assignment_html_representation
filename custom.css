@@ -1,20 +1,45 @@
-
+.reveal section p {
+    display: inline-block;
+    font-size: 1em;
+    line-height: 1.2em;
+    vertical-align: top;
+  }
 
 
 .exclaim .reveal .state-background {
   background: black;
 } 
 
-.exclaim .reveal div {
-  color: white;
+.reveal div {
+  color: #212E6F;
+  font-size: 0.8em;
   font-family: 'Lacquer';
 }
+
+.reveal div2 {
+  color: #238E2D;
+  font-size: 0.8em;
+  font-family: 'Lacquer';
+}
+
+.reveal div22 {
+  color: #238E2D;
+  font-size: 1.3em;
+  font-family: 'Lacquer';
+}
+
+.reveal div3 {
+  color: #81238E;
+  font-size: 0.9em;
+  font-family: 'Lacquer';
+}
+
 
 .exclaim .reveal code {
   color: red;
 }
 
 .small-code pre code {
-  font-size: 1em;
+  font-size: 3em;
 }
 
