@@ -26,7 +26,9 @@ library(tidyverse)
 
 # READ THE DATA AND SUMMARY
 
-**The variables of the data are the following:**
+The aim of this study is a brief explanation and representation of the `CLOTHING` database taken from the `Stat2Data` package:
+
+<div3>**The variables of the data are the following:**</div3>
 
 <ul>
 <li class="fragment highlight-current-blue" data-fragment-index="1">**ID**: 	Case ID</li>
@@ -35,9 +37,8 @@ library(tidyverse)
 <li class="fragment highlight-current-blue" data-fragment-index="4"> **Freq12**:	Number of purchases in the last 12 months</li>
 <li class="fragment highlight-current-red" data-fragment-index="5"> **Dollar12**:	Dollar amount of purchases in the last 12 months</li>
 <li class="fragment highlight-current-green" data-fragment-index="6"> **Freq24**:	Number of purchases in the last 24 month</li>
-<li class="fragment highlight-current-red" data-fragment-index="7"> **Freq24**:	Number of purchases in the last 24 month</li>
-<li class="fragment highlight-current-blue" data-fragment-index="8"> **Dollar24**:	Dollar amount of purchases in the last 24 months</li>
-<li class="fragment highlight-current-red" data-fragment-index="9">  **Card**:	1 for customers who have a private-label credit card with the retailer, 0 if not
+<li class="fragment highlight-current-blue" data-fragment-index="7"> **Dollar24**:	Dollar amount of purchases in the last 24 months</li>
+<li class="fragment highlight-current-red" data-fragment-index="8">  **Card**:	1 for customers who have a private-label credit card with the retailer, 0 if not
 </li>
 </ul>
 
@@ -56,6 +57,8 @@ Clothing$Card <- as.factor(Clothing$Card)
 
 
 # BOXPLOT NUMERIC VARIABLES
+
+<p class="fragment grow" data-fragment-index="1">Below are the `box-plots` of the *Recency* and *Amount* variables.</p>
 
 ## BOXPLOT RECENCY
 
@@ -87,7 +90,12 @@ ggplot(Clothing, aes(x=0,y=Amount))+
 
 # PLOT CATEGORICAL VARIABLE
 
-```{r echo=FALSE}
+The variable `Card` takes the following values:
+
+<li> 1: customers who have a private-label credit card </li>
+<li> 0: customers who have a public-label credit card </li>
+
+```{r echo=FALSE,out.width='500cm',fig.align='center',fig.pos="H"}
 library(tidyverse)
 library(ggplot2)
 count.g02=data.frame(
@@ -109,11 +117,15 @@ ggplot(count.g02, aes(x = "", y = prop, fill = g02)) +
   theme_void()
 ```
 
+<div2> It is found that 66.66$\%$ of consumers have a private-label credit card and 33.33$\%$ not.</div2>
+
 # REGRESSION MODEL
+
+<div22>We are interested in knowing the relationship of the variable `Amount` with respect to the variable `Dollar24`:</div22>
+
 
 ## SUMMARY OF THE MODEL
 
-We are interested in knowing the relationship of the variable "Amount" with respect to the variable "Dollar24":
 
 ```{r include=FALSE}
 Clothing=Clothing[-60,]
@@ -128,12 +140,13 @@ kable(summary(out)$coef, digits=3)
 
 
 
-**Results:** $y_i=\beta_0+\beta_1x_1+beta_2x_2=-6.2154+ 0.203x_1$
+<div3>**Results:**</div3> $y_i=\beta_0+\beta_1x_1=-6.2154+ 0.203x_1$
 
 --> The variable `Dollar24` is found to be significant for the model.
 
 
-## PLOT THE MODEL
+## PLOTLY THE MODEL
+
 
 ```{r, echo=F,warning=FALSE}
 Clothing=Clothing[-60,]
@@ -147,5 +160,4 @@ htmlwidgets::saveWidget(plot,'plotly.html')
 knitr::include_url('plotly.html', height = "576px")
 ```
 
-
-# END
+# END OF THE PRESENTATION
